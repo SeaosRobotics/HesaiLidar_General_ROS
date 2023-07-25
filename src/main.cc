@@ -108,6 +108,7 @@ public:
       pcl_conversions::toPCL(ros::Time(timestamp), cld->header.stamp);
       sensor_msgs::PointCloud2 output;
       pcl::toROSMsg(*cld, output);
+      // output.header.stamp = ros::Time::now();
       lidarPublisher.publish(output);
 #ifdef PRINT_FLAG
         printf("timestamp: %f, point size: %ld.\n",timestamp, cld->points.size());
